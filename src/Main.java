@@ -1,80 +1,77 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args) {task1();} {
+    public static void main(String[] args) {task5(); task6(); task7(); task8(); task9();} {
 
     }
-    private static void task1 () {
-        int [] first = new int [3];
-        first [0] = 1;
-        first [1] = 2;
-        first [2] = 3;
-
-        double [] second = {1.57, 7.654, 9.986};
-
-        String [] third = {"aaa", "bbb", "ccc"};
-
-        //task 2
-        for (int i : first){
-            if (i != first[first.length-1]){
-                System.out.print(i + ", ");
-            }
-            else {
-                System.out.print(i);
+    private static void task5 () {
+        int hight = 3; // высота массива
+        int lenght = 3;// ширина массива
+        int [][] matrix = new int[hight][lenght];// объявили массив
+        int numb = 1; // любое значение для проставления по диагонали
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (i == j || j == matrix[i].length-1-i) {
+                    matrix[j][i] = numb;
+                }
             }
         }
-        System.out.println("");
-        for (double sec : second){
-            if (sec != second[second.length-1]) {
-                System.out.print(sec + ", ");
-            } else {
-                System.out.print(sec);
-            }
-        }
-        System.out.println("");
-        for (String s : third){
-            if (s != third[third.length-1]) {
-                System.out.print(s + ", ");
-            } else {
-                System.out.print(s);
-            }
-        }
-        System.out.println("");
 
-        // task3
+        for (int [] row : matrix){
+            for (int column : row){
+                System.out.print(column + " ");
+            }
+            System.out.println();
+        }
+    }
 
-        for (int i = first.length-1; i >=0; i--) {
-            if (i != 0) {
-                System.out.print(first[i] + ", ");
-            } else {
-                System.out.print(first[i]);
-            }
+    public static void task6() {
+        int[] arr = new int[]{5, 4, 3, 2, 1};
+        System.out.println(Arrays.toString(arr));
+        int [] arr1 = new int[5];
+        for (int i = 0; i < arr.length; i++) {
+            arr1[i] = arr[arr.length-1-i];
         }
-        System.out.println("");
-        for (int i = second.length-1; i >= 0; i--) {
-            if (i != 0){
-                System.out.print(second[i] + ", ");
-            } else {
-                System.out.print(second[i]);
-            }
-        }
-        System.out.println("");
-        for (int y = third.length-1; y >= 0; y--) {
-            if (y != 0){
-                System.out.print(third[y] + ", ");
-            } else {
-                System.out.print(third[y]);
-            }
-        }
-        System.out.println("");
+        arr = arr1;
+        System.out.println(Arrays.toString(arr));
+    }
 
-        //task4
+    public static void task7(){
+        int[] arr = new int[]{5, 4, 3, 2, 1};
+        System.out.println(Arrays.toString(arr));
+        int leghtMin = arr.length/2;
+        for (int i = 0; i < leghtMin; i++) {
+            int x = arr[i];
+            arr[i] = arr[arr.length-1-i];
+            arr[arr.length-1-i] = x;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
 
-        for (int i = 0; i < first.length; i++){
-            if (first[i]%2 != 0){
-                first[i] += 1;
+    public static void task8(){
+        int[] arr = new int[]{-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        int summ = -2;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i != j && arr[i]+arr[j] == summ){
+                    System.out.println(arr[i] + " + " + arr[j] + " = " + summ);
+                    i = arr.length-1;
+                }
             }
         }
-        for (int i : first){
-            System.out.print(i + ", ");
+    }
+    public static void task9(){
+        int[] arr = new int[]{-6, 2, 5, -8, 8, 10, 4, -7, 12, 1};
+        int summ = -2;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (i != j && arr[i]+arr[j] == summ){
+                    System.out.println(arr[i] + " + " + arr[j] + " = " + summ);
+                }
+            }
         }
     }
 }
